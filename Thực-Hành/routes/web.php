@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\App;
@@ -84,7 +85,10 @@ Route::post('/login', function (Illuminate\Http\Request $request) {
 // Route::get('create', [PostController::class, 'create']);
 // Route::post('store', [PostController::class, 'store'])->name('store');
 
-Route::get('/{locale?}', function ($locale = null) {
-    App::setLocale($locale);
-    return view('welcome');
-})->name('user.change-language');
+// Route::get('/{locale?}', function ($locale = null) {
+//     App::setLocale($locale);
+//     return view('welcome');
+// })->name('user.change-language');
+
+// [Thực hành] Tạo controller của ứng dụng Task Management - P3
+// Route::get('customers', [CustomerController::class, 'index']);
