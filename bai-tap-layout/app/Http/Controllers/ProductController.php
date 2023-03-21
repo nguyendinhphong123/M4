@@ -11,8 +11,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-       
-        return view('products.index');
+       $products = 'Xin chào tất cả các bạn: Mình tên là Nguyễn Đình Phong';
+        return view('products.index',compact('products'));
     }
 
     /**
