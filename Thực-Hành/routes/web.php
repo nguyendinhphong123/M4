@@ -16,6 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// 1. Tổng quan về Laravel Framework
+// [Thực hành] Tạo một trang đăng nhập và hiển thị lời chào
+Route::get('/login', function () {
+    return view('dang-nhap.login');
+});
+Route::post('/login', function (Illuminate\Http\Request $request) {
+    if ($request->username == 'admin'
+        && $request->password == 'admin') {
+        return view('dang-nhap.welcome_admin');
+    }
+    return view('dang-nhap.login_error');
+});
+
 // [THỰC HÀNH] Ứng dụng xem giờ hiện tại của các thành phố trên thế giới
 // Route::get('/{timezone?}', function ($timezone = null) {
 //     if (!empty($timezone)) {
