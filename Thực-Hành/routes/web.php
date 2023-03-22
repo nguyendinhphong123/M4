@@ -92,3 +92,7 @@ Route::post('/login', function (Illuminate\Http\Request $request) {
 
 // [Thực hành] Tạo controller của ứng dụng Task Management - P3
 // Route::get('customers', [CustomerController::class, 'index']);
+
+// 4. View & Blade Template
+// [Thực hành] Ứng dụng quản lý khách hàng - P2
+Route::get('/customers',[CustomerController::class,'index']);
