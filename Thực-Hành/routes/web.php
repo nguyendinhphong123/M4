@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -96,3 +97,9 @@ Route::post('/login', function (Illuminate\Http\Request $request) {
 // 4. View & Blade Template
 // [Thực hành] Ứng dụng quản lý khách hàng - P2
 Route::get('/customers',[CustomerController::class,'index']);
+
+// [Thực hành] Ứng dụng Task Management với Blade Template - Sử dụng if, foreach
+Route::get('/', function () {
+    return view('task.welcome');
+})->name('welcome');
+Route::get('/tasks', [TaskController::class,'index'])->name('tasks.index');
