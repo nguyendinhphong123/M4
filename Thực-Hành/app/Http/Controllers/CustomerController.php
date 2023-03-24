@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
 {
@@ -14,28 +16,31 @@ class CustomerController extends Controller
     public function index()
     {
         // return view('modules.customer.index');
-        $customers = [
-            '0' => [
-                'id' => 1,
-                'name' => 'customer1',
-                'bod' => '1998-09-01',
-                'email' => 'customer1@gmail.com'
-            ],
+        // $customers = [
+        //     '0' => [
+        //         'id' => 1,
+        //         'name' => 'customer1',
+        //         'bod' => '1998-09-01',
+        //         'email' => 'customer1@gmail.com'
+        //     ],
     
-            '1' => [
-                'id' => 2,
-                'name' => 'customer2',
-                'bod' => '1998-09-01',
-                'email' => 'customer2@gmail.com'
-            ],
+        //     '1' => [
+        //         'id' => 2,
+        //         'name' => 'customer2',
+        //         'bod' => '1998-09-01',
+        //         'email' => 'customer2@gmail.com'
+        //     ],
     
-            '2' => [
-                'id' => 3,
-                'name' => 'customer3',
-                'bod' => '1998-09-01',
-                'email' => 'customer3@gmail.com'
-            ]
-        ];
+        //     '2' => [
+        //         'id' => 3,
+        //         'name' => 'customer3',
+        //         'bod' => '1998-09-01',
+        //         'email' => 'customer3@gmail.com'
+        //     ]
+        // ];
+        // return view('customers.list', compact('customers'));
+
+        $customers = Customer::all();
         return view('customers.list', compact('customers'));
     }
 
@@ -46,7 +51,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customers.create');
     }
 
     /**
@@ -57,7 +62,15 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = new Customer();
+        $customer->name = $request->input('name');
+        $customer->email = $request->input('email');
+        $customer->dob = $request->input('dob');
+        $customer->save();
+        //dung session de dua ra thong bao
+        Session::flash('success', 'Tạo mới khách hàng thành công');
+        //tao moi xong quay ve trang danh sach khach hang
+        return redirect()->route('customers.index');
     }
 
     /**
@@ -79,7 +92,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        return view('customers.edit', compact('customer'));
     }
 
     /**
@@ -91,7 +105,16 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        $customer->name = $request->input('name');
+        $customer->email = $request->input('email');
+        $customer->dob = $request->input('dob');
+        $customer->save();
+
+        //dung session de dua ra thong bao
+        Session::flash('success', 'Cập nhật khách hàng thành công');
+        //cap nhat xong quay ve trang danh sach khach hang
+        return redirect()->route('customers.index');
     }
 
     /**
@@ -102,6 +125,13 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
+
+        //dung session de dua ra thong bao
+        Session::flash('success', 'Xóa khách hàng thành công');
+
+        //xoa xong quay ve trang danh sach khach hang
+        return redirect()->route('customers.index');
     }
 }

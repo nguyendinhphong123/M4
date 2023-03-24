@@ -96,10 +96,24 @@ Route::post('/login', function (Illuminate\Http\Request $request) {
 
 // 4. View & Blade Template
 // [Thực hành] Ứng dụng quản lý khách hàng - P2
-Route::get('/customers',[CustomerController::class,'index']);
+// Route::get('/customers',[CustomerController::class,'index']);
 
 // [Thực hành] Ứng dụng Task Management với Blade Template - Sử dụng if, foreach
+// Route::get('/', function () {
+//     return view('task.welcome');
+// })->name('welcome');
+// Route::get('/tasks', [TaskController::class,'index'])->name('tasks.index');
+
+// 5. ORM và Eloquent
+// [Thực hành] Sử dụng Eloquent Ứng dụng quản lý khách hàng
 Route::get('/', function () {
-    return view('task.welcome');
-})->name('welcome');
-Route::get('/tasks', [TaskController::class,'index'])->name('tasks.index');
+    return view('home');
+});
+Route::group(['prefix' => 'customers'], function () {
+    Route::get('/', [CustomerController::class, 'index'])->name('customers.index');
+    Route::get('/create', [CustomerController::class, 'create'])->name('customers.create');
+    Route::post('/create', [CustomerController::class, 'store'])->name('customers.store');
+    Route::get('/{id}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+    Route::post('/{id}/edit', [CustomerController::class, 'update'])->name('customers.update');
+    Route::get('/{id}/destroy', [CustomerController::class, 'destroy'])->name('customers.destroy');
+});
