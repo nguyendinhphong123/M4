@@ -40,8 +40,10 @@ class CustomerController extends Controller
         // ];
         // return view('customers.list', compact('customers'));
 
-        $customers = Customer::all();
-        return view('customers.list', compact('customers'));
+        // $customers = Customer::all();
+        // return view('customers.list', compact('customers'));
+
+        
     }
 
     /**

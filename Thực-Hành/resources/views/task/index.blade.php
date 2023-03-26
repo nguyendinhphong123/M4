@@ -16,7 +16,9 @@
 <div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
-            Tasks List
+            <h2 style="text-align: center">Tasks list</h2>
+            <a href="{{route('tasks.create')}}">Thêm mới</a>
+
         </div>
         <div>
             @if(!isset($tasks))
@@ -31,6 +33,7 @@
                         <th scope="col">Created</th>
                         <th scope="col">Due Date</th>
                         <th scope="col">Image</th>
+                        <th scope="col">Hành động</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,6 +52,9 @@
                                 <td>
                                     {{-- <img src="{{ asset('storage/images/' . $task->image) }}" alt="" style="width: 150px"> --}}
                                 </td>
+                                <td><a href="{{ route('tasks.edit', $task->id) }}">sửa</a>
+                                <a href="{{ route('tasks.destroy', $task->id) }}" class="text-danger" onclick="return confirm('Bạn chắc chắn muốn xóa?')">xóa</a>
+                                <a href="{{route('tasks.show',[$task->id])}}" class="text-Success">Chi tiết</a></td>
                             </tr>
                         @endforeach
                     @endif
