@@ -2,19 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <ul class="nav navbar-nav topmenu-contact pull-left">
-                    <li><i class="fa fa-phone"></i> <span>Hotline:036 771 7778</span></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
-                    <li class="order-check"><a href="/kiem-tra-don-hang.html"><i
-                                class="fa fa-pencil-square-o"></i> Kiểm tra đơn hàng</a></li>
-                    <li class="order-cart"><a href="/gio-hang.html"><i class="fa fa-shopping-cart"></i> Giỏ
-                            hàng</a></li>
-                    <li class="account-login"><a href="/dang-nhap.html"><i class="fa fa-sign-in"></i> Đăng
-                            nhập </a></li>
-                    <li class="account-register"><a href="/dang-ky.html"><i class="fa fa-key"></i> Đăng ký
-                        </a></li>
-                </ul>
+              
                 <div class="show-mobile hidden-lg hidden-md">
                     <div class="quick-user">
                         <div class="quickaccess-toggle">
@@ -73,12 +61,14 @@
                 <!-- Search -->
                 <div class="search_box">
                     <div class="search_wrapper">
-                        <input type="text" name="search" class="index_input_search" id="txtsearch"
-                            onblur="if(this.value=='')this.value='Nhập từ khóa tìm kiếm...'"
-                            onfocus="if(this.value=='Nhập từ khóa tìm kiếm...')this.value=''"
-                            value="Nhập từ kh&#243;a t&#236;m kiếm..." />
-                        <button class="btn_search_submit btn " type="button" id="btnsearch"><span>Tìm
-                                ngay</span></button>
+                    
+
+                        <form  class="form-inline my-2 my-lg-0" action="{{ route('shop.index') }}" method="GET">
+                            @csrf
+                            <button  style="float:right" class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                              <input style="width: 300px; margin-right: 10px; float:right"  class="form-control" method="GET" name="product" type="text" placeholder="Tìm kiếm theo tên sản phẩm">
+              
+                              </form>
                     </div>
                 </div>
                 <!-- End Search -->
@@ -86,14 +76,13 @@
             <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                 <!-- Cart -->
                 <div class="cart_header">
-                    <a href="/gio-hang.html" title="Giỏ hàng">
+                    <a href="{{route('cart.index')}}" title="Giỏ hàng">
                         <span class="cart_header_icon"></span>
                         <span class="box_text">
-                            <strong class="cart_header_count">Giỏ hàng <span>(0)</span></strong>
-                            <span class="cart_price">0₫</span>
+                            <strong class="cart_header_count">Giỏ hàng <span>({{ count((array) session('cart')) }})</span></strong>
                         </span>
                     </a>
-                    <div class="cart_clone_box">
+                    {{-- <div class="cart_clone_box">
                         <div class="cart_box_wrap hidden">
                             <div class="cart_item original clearfix">
                                 <div class="cart_item_image"></div>
@@ -105,25 +94,43 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="cart_header_top_box">
+                    </div> --}}
+                    {{-- <div class="cart_header_top_box">
                         <div class="cart_empty">Giỏ hàng của bạn vẫn chưa có sản phẩm nào.</div>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- End Cart -->
                 <!-- Account -->
                 <div class="user_login">
+                    @if (isset(Auth()->guard('customers')->user()->name))
+                    <div class="user_login_icon"></div>
+                    <div class="user_box">
+                        <ul>
+                            <form method="POST" action="{{ route('shoplogout') }}">
+                                @csrf
+                                <li><a href="#"onclick="event.preventDefault();
+                                this.closest('form').submit();"
+                            class="header-cart-link icon button circle is-outline is-small">Đăng xuất</a></li>
+                        </form>
+                        </ul>
+                    </div>
+                    {{ Auth()->guard('customers')->user()->name }}
+
+                    @else
                     <div class="user_login_icon"></div>
                     <div class="box_text">
                         <strong>Tài khoản</strong>
+                        
                         <!--<span class="cart_price">Đăng nhập, đăng ký</span>-->
                     </div>
                     <div class="user_box">
                         <ul>
-                            <li><a href="{{route('register')}}">Đăng nhập</a></li>
-                            <li><a href="{{route('login')}}">Đăng ký</a></li>
+                            <li><a href="{{route('login.index')}}">Đăng nhập</a></li>
+                            <li><a href="{{route('shop.register')}}">Đăng ký</a></li>
                         </ul>
                     </div>
+                    @endif
+
                 </div>
                 <!-- End account -->
             </div>

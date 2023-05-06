@@ -1,3 +1,4 @@
+
 <div id="mb_mainnav">
     <div class="container">
         <div class="row">
@@ -72,22 +73,22 @@
                                                 khô</span></a></li>
                                 </ul class='level1'>
                             </li>
-                            <li class="level0"><a class='' href='/san-pham/san-pham-khac-33813'><img
+                            {{-- <li class="level0"><a class='' href='/san-pham/san-pham-khac-33813'><img
                                         class='icon-menu' src='{{asset('shop/Uploads/shop2005/images/icon/s9.png')}}'
                                         alt='Sản phẩm khác'> <span>Sản phẩm khác</span></a></li>
-                        </ul class='nav_verticalmenu'>
+                        </ul class='nav_verticalmenu'> --}}
                     </div>
                 </div>
             </div>
             <nav class="col-md-9 col-sm-12 col-xs-12 p-l-0">
                 <ul class='menu nav navbar-nav menu_hori'>
-                    <li class="level0"><a class='' href='/trang-chu.html'><span>Trang chủ</span></a>
+                    <li class="level0"><a class='' href='{{route('shop.index')}}'><span>Trang chủ</span></a>
                     </li>
-                    <li class="level0"><a class='' href='/gioi-thieu.html'><span>Giới thiệu</span></a>
+                    {{-- <li class="level0"><a class='' href='/gioi-thieu.html'><span>Giới thiệu</span></a>
                     </li>
                     <li class="level0"><a class='' href='/san-pham.html'><span>Sản phẩm</span></a></li>
                     <li class="level0"><a class='' href='/tin-tuc.html'><span>Tin tức</span></a></li>
-                    <li class="level0"><a class='' href='/lien-he.html'><span>Liên hệ</span></a></li>
+                    <li class="level0"><a class='' href='/lien-he.html'><span>Liên hệ</span></a></li> --}}
                 </ul class='menu nav navbar-nav menu_hori'>
             </nav>
         </div>

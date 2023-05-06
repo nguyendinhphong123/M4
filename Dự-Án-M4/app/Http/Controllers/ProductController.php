@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
 
 class ProductController extends Controller
 {
@@ -16,7 +17,8 @@ class ProductController extends Controller
     public function index()
     {
         // $products = Product::all();
-        $products = Product::paginate(2);
+        $products = Product::paginate(4);
+        
         return view('admin.products.index',compact('products'));
     }
 
@@ -68,7 +70,15 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        // $this->authorize('view', Product::class);
+
+        $productshow = Product::findOrFail($id);
+        $param =[
+            'productshow'=>$productshow,
+        ];
+
+        // $productshow-> show();
+        return view('admin.products.show',  $param );
     }
 
     /**
@@ -127,8 +137,37 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $products = Product::findOrFail($id);
-        $products->delete();
-        return redirect()->route('product.index');
+        try {
+            $products = Product::onlyTrashed()->findOrFail($id);
+            $products->forceDelete();
+            return redirect()->back()->with('status', 'Xóa sản phẩm thành công');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Vì sản phẩm đang được order nên không thể xóa');
+        }
+      
+    
+      
+
+      
+    }
+    public  function softdeletes($id)
+    {
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $product = Product::findOrFail($id);
+        $product->deleted_at = date("Y-m-d h:i:s");
+        $product->save();
+        return redirect()->back()->with('status', 'Sản phẩm đã được thêm vào thùng rác');
+    }
+    public function restoredelete($id) {
+        $products = Product::withTrashed()->where('id',$id);
+        $products->restore();
+        return redirect()->route('product.trash')->with('status', 'Khôi phục sản phẩm thành công');
+    }
+    public  function trash()
+    {
+        $products = Product::onlyTrashed()->paginate(3);
+        $param = ['products' => $products];
+        return view('admin.products.trash', $param);
+        // dd(223);
     }
 }

@@ -7,7 +7,7 @@
     <title>SeaFood Store</title>
     <meta name="description" />
     <meta name="keywords" />
-    <link href="{{asset('shop/Uploads/shop2005/images/favicon.png" rel="shortcut icon')}}" type="image/x-icon" />
+    <link href="{{asset('shop/Uploads/shop2005/images/favicon.png')}}" rel="shortcut icon" type="image/x-icon" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="fb:app_id" content="227481454296289" />
@@ -19,6 +19,12 @@
     <meta content="{{asset('shop/Uploads/shop2005/images/logo.png')}}" property="og:image" />
     <meta content="http://runecom04.runtime.vn/" property="og:url" />
     <meta content="SeaFood Store" property="og:site_name" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .loader_overlay {
@@ -46,6 +52,7 @@
     <link rel="stylesheet" href="{{asset('shop/assets/100004/js/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('shop/assets/100004/fonts/font-awesome/css/font-awesome.min.css')}}">
 
+    
     <link rel="stylesheet" type="text/css" href="{{asset('shop/assets/100004/fonts/fonts-master/roboto.css')}}">
     <!--JS-->
     <script src="{{asset('shop/assets/100004/js/plugin.js?v=582')}}"></script>
@@ -100,74 +107,7 @@
 
             <script src="/Scripts/common/login.js" type="text/javascript"></script>
             @include('shop.includes.header')
-            <!--Template--
-<section class="top-link clearfix" ng-controller="moduleController" ng-init="initTopLinkController('Shop','AccountLogin')">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="nav navbar-nav topmenu-contact pull-left">
-                   {{--  <li><i class="fa fa-phone"></i> <span>Hotline:{{shop.Hotline}}</span></li> --}}
-                </ul>
-                <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm" ng-if="accountLogin==null">
-                    <li class="order-check"><a href="/kiem-tra-don-hang.html"><i class="fa fa-pencil-square-o"></i> Kiểm tra đơn hàng</a></li>
-                    <li class="order-cart"><a href="/gio-hang.html"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-                    <li class="account-login"><a href="/dang-nhap.html"><i class="fa fa-sign-in"></i> Đăng nhập </a></li>
-                    <li class="account-register"><a href="/dang-ky.html"><i class="fa fa-key"></i> Đăng ký </a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right topmenu hidden-xs hidden-sm" ng-if="accountLogin!=null">
-                    <li class="order-check"><a href="/kiem-tra-don-hang.html"><i class="fa fa-pencil-square-o"></i> Kiểm tra đơn hàng</a></li>
-                    <li class="order-cart"><a href="/gio-hang.html"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-                    <li class="webmaster"><a href="/admin"><i class="fa fa-gears"></i> Quản trị website</a></li>
-                    <li class="account-info">
-                        {{-- <a href="/thong-tin-tai-khoan.html">{{accountLogin.Email}}</a> --}}
-                        <a class="account-logout" id="btnLogOff" href="javascript:void(0)" title="">[Thoát] </a>
-                    </li>
-                </ul>
-                <div class="show-mobile hidden-lg hidden-md">
-                    <div class="quick-user">
-                        <div class="quickaccess-toggle">
-                            <i class="fa fa-user"></i>
-                        </div>
-                        <div class="inner-toggle">
-                            <ul class="login links" ng-if="accountLogin==null">
-                                <li>
-                                    <a href="/dang-ky.html"><i class="fa fa-sign-in"></i> Đăng ký</a>
-                                </li>
-                                <li>
-                                    <a href="/dang-nhap.html"><i class="fa fa-key"></i>Đăng nhập</a>
-                                </li>
-                            </ul>
-                            <ul class="login links" ng-if="accountLogin!=null">
-                                <li ng-if="accountLogin.AccountTypeId==1">
-                                    <a href="/admin"><i class="fa fa-gears"></i> Quản trị website</a>
-                                </li>
-                                <li>
-                                    {{-- <a href="/thong-tin-tai-khoan.html">{{accountLogin.Email}}</a> --}}
-                                </li>
-                                <li>
-                                    <a id="btnLogOff2" href="javascript:void(0)"><i class="fa fa-sign-out"></i> [Thoát] </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="quick-access">
-                        <div class="quickaccess-toggle">
-                            <i class="fa fa-list"></i>
-                        </div>
-                        <div class="inner-toggle">
-                            <ul class="links">
-                                <li><a id="mobile-wishlist-total" href="/kiem-tra-don-hang.html" class="wishlist"><i class="fa fa-pencil-square-o"></i> Kiểm tra đơn hàng</a></li>
-                                <li><a href="/gio-hang.html" class="shoppingcart"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-        </div>
-    </div>
-</section>
---End-->
 
             <!-- Header -->
             <header id="header">
@@ -347,7 +287,7 @@
                 <div class="container m-b-30">
                     <div class="row">
                         <div id="service_home" class="clearfix">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 col-xxs-12 text-center m-b-xs-10">
+                            {{-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 col-xxs-12 text-center m-b-xs-10">
                                 <div class="service_item">
                                     <div class="icon icon_product">
                                         <img src="{{asset('shop/assets/100004/images/icon_1.png?v=582')}}" alt="">
@@ -364,7 +304,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 col-xxs-12 text-center m-b-xs-10">
                                 <div class="service_item">
-                                    <div class="icon icon_product">
+                                    <div class="icon icon_product" >
                                         <img src="{{asset('shop/assets/100004/images/icon_2.png?v=582')}}" alt="">
                                     </div>
                                     <div class="description_icon">
@@ -373,6 +313,35 @@
                                         </span>
                                         <span class="small-text">
                                             Với tất cả đơn hàng
+                                        </span>
+                                    </div>
+                                </div>
+                            </div> --}}
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center m-b-xs-10">
+                                <div class="service_item">
+                                    <div class="icon icon_product">
+                                        <img src="{{asset('shop/assets/100004/images/icon_1.png?v=582')}}" alt="">
+                                    </div>
+                                    <div class="description_icon">
+                                        <span class="large-text">
+                                            miễn phí vận chuyển
+                                        </span>
+                                        <span class="small-text">
+                                            Tất cả các đơn hàng
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center m-b-xs-10">
+                                <div class="service_item">
+                                    <div class="icon icon_product">
+                                        <img src="{{asset('shop/assets/100004/images/icon_2.png?v=582')}}" alt="">
+                                    </div>
+                                    <div class="description_icon">
+                                        <span class="large-text">
+                                            giao hàng trong ngày
+                                        </span>
+                                        <span class="small-text">
+                                            Với tất cả các đơn hàng
                                         </span>
                                     </div>
                                 </div>
@@ -466,118 +435,7 @@
         <script src="{{asset('shop/app/services/moduleServices.js')}}"></script>
         <script src="{{asset('shop/app/controllers/moduleController.js')}}"></script>
         @include('shop.includes.footer')
-        <!--Template--
-<footer class="footer-content" ng-controller="moduleController" ng-init="initFooterController('Shop')">
-    <div class="footer_top">
-        <div class="container">
-            <div class="footer_top_wrap">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="item in menus|filter: { ParentId: null }|limitTo:2">
-                        <div class="footer_block">
-                            <h4 class="footer_block_title">
-                                {{-- <span>{{item.Name}}</span> --}}
-                            </h4>
-                            <div class="block_content">
-                                <ul class="list_group" ng-if="(menus|filter: { ParentId: item.Id }).length>0">
-                                    <li ng-repeat="it in menus|filter: { ParentId: item.Id }">
-                                        {{-- <a href="/{{it.PageCode}}.html" ng-if="it.LinkType==LinkTypeConst.Page"> --}}
-                                            {{-- {{it.Name}} --}}
-                                        </a>
-                                        {{-- <a href="/{{it.PageOptionCode}}/{{it.PageContentCode}}.html" ng-if="it.LinkType==LinkTypeConst.PageContent"> --}}
-                                            {{-- {{it.Name}} --}}
-                                        </a>
-                                        {{-- <a href="/san-pham/{{it.ProductGroupCode}}" ng-if="it.LinkType==LinkTypeConst.GroupProduct"> --}}
-                                            {{-- {{it.Name}} --}}
-                                        </a>
-                                        {{-- <a href="/tin-tuc/{{it.NewsGroupCode}}" ng-if="it.LinkType==LinkTypeConst.GroupNews"> --}}
-                                            {{-- {{it.Name}} --}}
-                                        </a>
-                                        {{-- <a href="/du-an/{{it.ProjectGroupCode}}" ng-if="it.LinkType==LinkTypeConst.GroupProject"> --}}
-                                            {{-- {{it.Name}} --}}
-                                        </a>
-                                        {{-- <a href="/dich-vu/{{it.ServiceGroupCode}}" ng-if="it.LinkType==LinkTypeConst.GroupService"> --}}
-                                            {{-- {{it.Name}} --}}
-                                        </a>
-                                      {{--   <a href="/san-giao-dich/{{it.ExchangeGroupCode}}" ng-if="it.LinkType==LinkTypeConst.GroupExchange"> --}}
-                                            {{-- {{it.Name}} --}}
-                                        </a>
-                                      {{--   <a href="{{it.Url}}" ng-if="it.LinkType==LinkTypeConst.Url"> --}}
-                                            {{-- {{it.Name}} --}}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="footer_block">
-                            <h4 class="footer_block_title">
-                                Đăng ký nhận bản tin
-                            </h4>
-                            <div class="block_content">
-                                <div class="des_newsletter_form">
-                                    Đăng Ký Thành Viên Để Nhận Bản Tin Mỗi Ngày:
-                                </div>
-                                <form id="newsletter_form" ng-submit="registerNewsletter()" class="m-b-20 contact-form">
-                                    <div class="newsletter_wrap">
-                                        <input ng-model="newsletter.Email" required="" id="contact_email" autocomplete="off" type="email">
-                                        <label>Email của bạn </label>
-                                        <button class="btn-newsletter" type="submit">
-                                            <span><i class="fa fa-paper-plane-o"></i></span>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="footer_block">
-                            <h4 class="footer_block_title">
-                                Theo dõi trên Fanpage
-                            </h4>
-                            <div class="block_content">
-                                {{-- <div class="fb-page" data-small-header="true" data-href="{{shop.Fanpage}}" data-tabs="message" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div> --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer_bottom">
-        <div class="container">
-            <div class="footer_bottom_wrap">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="footer_address">
-                            {{-- <p><span>{{shop.Name}}</span></p> --}}
-                            {{-- <p><span>Địa chỉ: {{shop.Address}}</span></p> --}}
-                            {{-- <p><span>Số điện thoại: {{shop.Phone}}</span></p>
-                            <p><span>Số di động: {{shop.Hotline}}</span></p>
-                            <p><span>Email: {{shop.Email}}</span></p> --}}
-                        </div>
-                    </div>
-                    <div class="col-lg-5 text-right text-center-xs">
-                        <div class="copy_right">
-                            <p>
-                                {{-- &copy; 2017. Bản quyền thuộc về <a rel="nofollow" href="{{shop.Website}}">{{shop.Name}}</a>. Powered by <a href="http://www.runtime.vn">RUNTIME.VN</a> --}}
-                            </p>
-                        </div>
-                        <div class="social_footer">
-                            <ul>
-                                {{-- <li><a href="{{shop.Facebook}}"><span><i class="fa fa-facebook"></i></span></a></li>
-                                <li><a href="{{shop.Twitter}}"><span><i class="fa fa-twitter"></i></span></a></li>
-                                <li><a href="{{shop.Google}}"><span><i class="fa fa-google-plus"></i></span></a></li>
-                                <li><a href="{{shop.Youtube}}"><span><i class="fa fa-youtube"></i></span></a></li> --}}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
---End-->
+
     </div>
 
     </div>
@@ -593,11 +451,18 @@
     </div>
     <a href="javascript:void(0);" class="back-to-top"><span>Top</span></a>
 
+    @yield('scripts')
+
 
 </body>
 
-</html>
+</html>    
 <script type="text/javascript">
     $(".header-content").css({ "background": '' });
     $("html").addClass('');
 </script>
+@if (session('status'))
+    <script>
+        alert('Sản phẩm đã được thêm vào giỏ hàng')
+    </script>
+@endif

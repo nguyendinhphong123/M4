@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders');
             $table->integer('quantity');
-            $table->integer('price');
+            $table->string('price');
             $table->timestamps();
         });
     }

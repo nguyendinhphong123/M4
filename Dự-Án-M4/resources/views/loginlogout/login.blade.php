@@ -6,6 +6,7 @@ flex: 1;
 height: 1px;
 background: #eee;
 }
+
 </style>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,16 +30,20 @@ background: #eee;
             class="img-fluid" alt="Phone image">
         </div>
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-          <form>
+          <form action="{{route('shop.checklogin')}}" method="post">
+            @csrf
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input type="email" id="form1Example13" class="form-control form-control-lg" />
-              <label class="form-label" for="form1Example13">Email address</label>
+              <input type="text" name="email" id="form1Example13" class="form-control form-control-lg" />
+              <label class="form-label" for="form1Example13">Email </label>
             </div>
+            @error('email')
+            <div class="text text-danger">{{ $message }}</div>
+        @enderror
   
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" id="form1Example23" class="form-control form-control-lg" />
+              <input type="password" name="password" id="form1Example23" class="form-control form-control-lg" />
               <label class="form-label" for="form1Example23">Password</label>
             </div>
   
@@ -54,18 +59,7 @@ background: #eee;
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
   
-            <div class="divider d-flex align-items-center my-4">
-              <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
-            </div>
-  
-            <a class="btn btn-primary btn-lg btn-block" style="background-color: #3b5998" href="#!"
-              role="button">
-              <i class="fab fa-facebook-f me-2"></i>Continue with Facebook
-            </a>
-            <a class="btn btn-primary btn-lg btn-block" style="background-color: #55acee" href="#!"
-              role="button">
-              <i class="fab fa-twitter me-2"></i>Continue with Twitter</a>
-  
+            
           </form>
         </div>
       </div>
